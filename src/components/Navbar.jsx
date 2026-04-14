@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
+  const navigate=useNavigate();
+  const {setShowSearch}=useContext(ShopContext);
      const navItems = [
         {
             id: 1,
             text: "HOME",
-            to:"/home"
+            to:"/"
         },
         {
             id: 2,
@@ -26,10 +29,10 @@ const Navbar = () => {
         }
     ]
   return (
-    <div className='flex items-center justify-between font-medium relative'>
+    <div className='flex items-center justify-between font-medium py-5 relative'>
 
       <div>
-        <img src="/Y-MartLogo.png" className='h-20 w-auto cursor-pointer' alt="Y-Mart" />
+        <img src="/Ymart Logo.png" className='h-10 w-auto cursor-pointer' alt="Y-Mart" />
       </div>
 
       <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
@@ -73,7 +76,10 @@ const Navbar = () => {
       {/*Now adding all the search icons login and cart items*/}
       <div className='flex items-center gap-6'>
         <div>
-          <img src="/search.png" className='w-6 cursor-pointer' alt="search" />
+          <img src="/search.png" className='w-6 cursor-pointer' alt="search" onClick={()=>{
+            setShowSearch(true);
+            navigate("/collection")
+          }}/>
         </div>
         <div className='relative group'>
           <img src="/user login.png" alt="user" className='w-6 cursor-pointer' />

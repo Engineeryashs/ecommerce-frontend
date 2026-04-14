@@ -2,17 +2,34 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import Collection from './pages/Collection'
+import SearchBar from './components/SearchBar'
+import Product from './pages/Product'
+import PlaceOrder from './pages/PlaceOrder'
+import MyOrder from './pages/MyOrder'
+import Login from './pages/Login'
 
 function App() {
   return (
-    <HashRouter>
-  
+    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+        <HashRouter>
         <Navbar/>
+        <SearchBar/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/collection" element={<Collection/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/product/:productId" element={<Product/>}/>
+          <Route path="/place-order" element={<PlaceOrder/>}/>
+          <Route path="/orders" element={<MyOrder/>}/>
         </Routes>
-    
     </HashRouter>
+    </div>
+    
   )
 }
 
